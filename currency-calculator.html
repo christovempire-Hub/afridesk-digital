@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Currency & Fee Calculator | AfriDesk Digital</title>
+<meta name="description" content="Calculate currency conversions, percentage fees and fixed transaction costs for digital and cross-border payments.">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial,Helvetica,sans-serif;color:#172033;background:#f7f9fb;line-height:1.6}header{background:#fff;border-bottom:1px solid #e5e7eb}.nav{max-width:1000px;margin:auto;padding:17px 22px;display:flex;justify-content:space-between;align-items:center}.logo{font-size:24px;font-weight:800;text-decoration:none;color:#172033}.logo span{color:#0b7a75}nav{display:flex;gap:24px}nav a{color:#39445a;text-decoration:none;font-weight:600;font-size:14px}nav a:hover{color:#0b7a75}.wrap{max-width:1000px;margin:auto;padding:55px 22px 75px}.intro{text-align:center;max-width:720px;margin:0 auto 35px}.intro .tag{display:inline-block;background:#dff4f1;color:#0b7a75;padding:6px 12px;border-radius:999px;font-size:12px;font-weight:700;margin-bottom:13px}.intro h1{font-size:42px;line-height:1.15;margin-bottom:14px}.intro p{color:#657184;font-size:17px}.calculator{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}.panel{background:#fff;border:1px solid #e1e6eb;border-radius:14px;padding:27px;box-shadow:0 10px 30px rgba(20,40,60,.06)}.panel h2{font-size:21px;margin-bottom:20px}.field{margin-bottom:17px}.field label{display:block;font-size:13px;font-weight:700;margin-bottom:7px;color:#39445a}.row{display:grid;grid-template-columns:1fr 130px;gap:10px}input,select{width:100%;padding:12px;border:1px solid #cfd6de;border-radius:8px;background:#fff;color:#172033;font-size:15px}input:focus,select:focus{outline:2px solid #cce9e6;border-color:#0b7a75}.hint{font-size:12px;color:#7a8492;margin-top:5px}.result{background:#eefaf8;border:1px solid #cce9e6;border-radius:12px;padding:20px;margin-top:8px}.result .label{font-size:13px;color:#5d687a}.result .big{font-size:31px;font-weight:800;color:#0b7a75;margin:3px 0 10px;word-break:break-word}.summary{display:grid;gap:10px}.summary div{display:flex;justify-content:space-between;gap:15px;border-bottom:1px solid #d8ebe8;padding-bottom:9px;font-size:14px}.summary div:last-child{border-bottom:0;padding-bottom:0}.summary strong{text-align:right}.reset{margin-top:18px;width:100%;padding:12px;border:0;border-radius:8px;background:#0b7a75;color:#fff;font-weight:700;cursor:pointer}.reset:hover{background:#096964}.note{margin-top:25px;background:#fff;border:1px solid #e1e6eb;border-radius:12px;padding:17px;color:#657184;font-size:13px}.note strong{color:#39445a}@media(max-width:700px){nav{display:none}.wrap{padding:40px 17px 60px}.intro h1{font-size:34px}.calculator{grid-template-columns:1fr}.row{grid-template-columns:1fr 105px}.panel{padding:22px}}
+</style>
+</head>
+<body>
+<header><div class="nav"><a href="index.html" class="logo">Afri<span>Desk</span> Digital</a><nav><a href="index.html#tools">Tools</a><a href="index.html#learn">Learn</a><a href="index.html#resources">Resources</a><a href="index.html#about">About</a></nav></div></header>
+<main class="wrap">
+<div class="intro"><div class="tag">FREE TOOL</div><h1>Currency & Fee Calculator</h1><p>Estimate how much a payment costs after exchange rates, percentage fees and fixed transaction charges.</p></div>
+<div class="calculator">
+<section class="panel">
+<h2>Enter payment details</h2>
+<div class="field"><label for="amount">Amount you are sending</label><input id="amount" type="number" min="0" step="0.01" value="100000"><div class="hint">Enter the amount in the sending currency.</div></div>
+<div class="field"><label for="from">Sending currency</label><select id="from"><option>NGN</option><option>USD</option><option>KES</option><option>GHS</option><option>ZAR</option><option>GBP</option><option>EUR</option></select></div>
+<div class="field"><label for="to">Receiving currency</label><select id="to"><option>USD</option><option>NGN</option><option>KES</option><option>GHS</option><option>ZAR</option><option>GBP</option><option>EUR</option></select></div>
+<div class="field"><label for="rate">Exchange rate</label><input id="rate" type="number" min="0" step="0.000001" value="1500"><div class="hint">For example, if 1 USD = 1,500 NGN, enter 1,500 when converting NGN to USD.</div></div>
+<div class="field"><label for="percent">Percentage fee (%)</label><input id="percent" type="number" min="0" step="0.01" value="1.5"></div>
+<div class="field"><label for="fixed">Fixed fee in sending currency</label><input id="fixed" type="number" min="0" step="0.01" value="0"></div>
+</section>
+<section class="panel">
+<h2>Estimated result</h2>
+<div class="result"><div class="label">Estimated amount received</div><div class="big" id="received">$65.67</div><div class="label">after the estimated fees</div></div>
+<div class="summary" style="margin-top:20px"><div><span>Amount sent</span><strong id="sent">NGN 100,000.00</strong></div><div><span>Percentage fee</span><strong id="pctFee">NGN 1,500.00</strong></div><div><span>Fixed fee</span><strong id="fixedFee">NGN 0.00</strong></div><div><span>Total fees</span><strong id="totalFee">NGN 1,500.00</strong></div><div><span>Amount after fees</span><strong id="net">NGN 98,500.00</strong></div><div><span>Exchange rate used</span><strong id="rateUsed">1 USD = 1,500 NGN</strong></div></div>
+<button class="reset" onclick="resetCalc()">Reset calculator</button>
+</section>
+</div>
+<div class="note"><strong>Important:</strong> This calculator provides an estimate based on the rate and fees you enter. Exchange rates and provider fees can change. Always confirm the final amount and charges with the payment provider before sending money.</div>
+</main>
+<script>
+const ids=['amount','from','to','rate','percent','fixed'];
+const els=Object.fromEntries(ids.map(id=>[id,document.getElementById(id)]));
+const symbols={NGN:'₦',USD:'$',KES:'KSh',GHS:'GH₵',ZAR:'R',GBP:'£',EUR:'€'};
+function money(value,currency){const symbol=symbols[currency]||currency+' ';return symbol+Number(value||0).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})}
+function calculate(){const amount=Math.max(0,Number(els.amount.value)||0);const from=els.from.value;const to=els.to.value;const rate=Math.max(0,Number(els.rate.value)||0);const percent=Math.max(0,Number(els.percent.value)||0);const fixed=Math.max(0,Number(els.fixed.value)||0);const pctFee=amount*(percent/100);const totalFee=pctFee+fixed;const net=Math.max(0,amount-totalFee);const converted=rate>0?net/rate:0;document.getElementById('received').textContent=money(converted,to);document.getElementById('sent').textContent=money(amount,from);document.getElementById('pctFee').textContent=money(pctFee,from);document.getElementById('fixedFee').textContent=money(fixed,from);document.getElementById('totalFee').textContent=money(totalFee,from);document.getElementById('net').textContent=money(net,from);document.getElementById('rateUsed').textContent=`1 ${to} = ${rate.toLocaleString(undefined,{maximumFractionDigits:6})} ${from}`}
+ids.forEach(id=>{els[id].addEventListener('input',calculate);els[id].addEventListener('change',calculate)});
+function resetCalc(){els.amount.value=100000;els.from.value='NGN';els.to.value='USD';els.rate.value=1500;els.percent.value=1.5;els.fixed.value=0;calculate()}
+calculate();
+</script>
+</body>
+</html>
